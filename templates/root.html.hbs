@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark"/>
+    <link rel="stylesheet" href="/public/css/pico.min.css">
+    <title>Hello world!</title>
+</head>
+<body>
+<main class="container">
+    <h1>Hello Rust!</h1>
+
+    {{#if errors }}
+        <article>
+            <header>🥺Oh No!</header>
+            <p>There are some invalid fields in the form</p>
+            <ul>
+                {{#each errors}}
+                    <li>{{this}}</li>
+                {{/each}}
+            </ul>
+        </article>
+    {{/if}}
+
+    <form method="POST" enctype="multipart/form-data" action="/">
+        <input type="text"
+               name="first_name"
+               placeholder="First Name"
+               aria-label="First Name"
+               value="{{ first_name }}"
+               aria-invalid="{{ first_name_error}}"
+        />
+
+        <input type="text" name="last_name"
+               placeholder="Last Name"
+               aria-label="Last Name"
+               value="{{ last_name }}"
+               aria-invalid="{{ last_name_error}}"
+        />
+        
+        <button type="submit">Say Hello</button>
+    </form>
+</main>
+</body>
+</html>
